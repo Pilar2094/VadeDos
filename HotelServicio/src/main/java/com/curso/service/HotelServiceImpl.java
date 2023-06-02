@@ -23,6 +23,7 @@ public class HotelServiceImpl implements HotelService {
 	public Hotel buscarHotel(String nombre) {
 		return dao.buscarHotel(nombre);
 	}
+
 	
 	
 

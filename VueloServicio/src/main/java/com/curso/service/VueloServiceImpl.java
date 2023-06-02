@@ -19,4 +19,21 @@ public class VueloServiceImpl implements VueloService {
 		return dao.listaVuelosDisponibles(plazas);
 	}
 
+	@Override
+	public void actualizarPlazaVuelo(int idVuelo, int plazas ) {
+		Vuelo vuelo = dao.findById(idVuelo).orElse(null);
+			if(vuelo!=null) {
+				vuelo.setPlazasDisponibles(vuelo.getPlazasDisponibles()-plazas);
+				dao.save(vuelo);
+		}
+	}
+
+	@Override
+	public Vuelo BuscarVueloPorID(int idVuelo) {
+		return dao.findById(idVuelo).orElse(null);
+	}
+	
+	
+	
+
 }
