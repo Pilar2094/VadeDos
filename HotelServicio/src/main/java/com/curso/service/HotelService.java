@@ -8,5 +8,5 @@ public interface HotelService{
 	
 	List<Hotel> listaHoteles();
 	Hotel buscarHotel(String nombre);
-
+	void agregarHotel(Hotel hotel);
 }

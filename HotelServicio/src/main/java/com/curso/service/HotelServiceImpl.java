@@ -24,6 +24,12 @@ public class HotelServiceImpl implements HotelService {
 		return dao.buscarHotel(nombre);
 	}
 
+	@Override
+	public void agregarHotel(Hotel hotel) {
+		dao.save(hotel);
+		
+	}
+
 	
 	
 

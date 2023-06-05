@@ -32,6 +32,12 @@ public class VueloServiceImpl implements VueloService {
 	public Vuelo BuscarVueloPorID(int idVuelo) {
 		return dao.findById(idVuelo).orElse(null);
 	}
+
+	@Override
+	public void agregarVuelo(Vuelo vuelo) {
+		dao.save(vuelo);
+		
+	}
 	
 	
 	

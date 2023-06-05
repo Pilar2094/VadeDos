@@ -1,21 +1,9 @@
-/**
- * 
- */
 package com.curso.entity;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-/**
- * @author sinensia
- *
- */
-
-@Entity
-@Table(name="reservas")
-public class Reserva {
+public class ReservaAux {
 
 	@Id
 	@Column(name="idreserva")
@@ -29,18 +17,22 @@ public class Reserva {
 	@Column(name="idvuelo")
 	private int idVuelo;
 	
+	private int cantPersonas;
 	
-	public Reserva() {
+	public ReservaAux() {
 	
 	}
 	
-	public Reserva(int idReserva, String nombreCliente, String dni, int idHotel, int idVuelo) {
+
+	public ReservaAux(int idReserva, String nombreCliente, String dni, int idHotel, int idVuelo, int  cantPersonas) {
 		this.idReserva = idReserva;
 		this.nombreCliente = nombreCliente;
 		this.dni = dni;
 		this.idHotel = idHotel;
 		this.idVuelo = idVuelo;
+		this.cantPersonas = cantPersonas;
 	}
+	
 
 	
 
@@ -84,8 +76,12 @@ public class Reserva {
 		this.idVuelo = idVuelo;
 	}
 
+	public int getCantPersonas() {
+		return cantPersonas;
+	}
 
+	public void setCantPersonas(int cantPersonas) {
+		this.cantPersonas = cantPersonas;
+	}
 
-	
-	
 }

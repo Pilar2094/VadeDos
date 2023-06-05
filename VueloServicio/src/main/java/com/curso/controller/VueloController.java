@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.curso.entity.Vuelo;
@@ -31,18 +33,18 @@ public class VueloController {
 	VueloService service;
 	
 	@ApiOperation(value = "Devuelve la lista de vuelos con plazas disponibles")
-	@ApiParam(value="http://localhost:8081/vuelos/{plazas}")
+	@ApiParam(value="http://localhost:8082/vuelos/{plazas}")
 	@ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK. El recurso se obtiene correctamente", response = Vuelo.class ),
             @ApiResponse(code = 400, message = "Bad Request.Esta vez cambiamos el tipo de dato de la respuesta (String)", response = Vuelo.class),
             @ApiResponse(code = 500, message = "Error inesperado del sistema") })
-	@GetMapping(value="vuelos/{plazas}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="vuelos/plazas/{plazas}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Vuelo> listaVuelosDisponibles(@PathVariable("plazas")int plazas){
 		return service.listaVuelosDisponibles(plazas);
 	}
 	
 	@ApiOperation(value = "Actualiza las plazas del vuelo")
-	@ApiParam(value="http://localhost:8081/vuelos/{idvuelo}/{plazas}")
+	@ApiParam(value="http://localhost:8082/vuelos/{idvuelo}/{plazas}")
 	@ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK. El recurso se obtiene correctamente", response = Vuelo.class ),
             @ApiResponse(code = 400, message = "Bad Request.Esta vez cambiamos el tipo de dato de la respuesta (String)", response = Vuelo.class),
@@ -53,13 +55,24 @@ public class VueloController {
 	}
 	
 	@ApiOperation(value = "Devuelve los datos del vuelo por id.")
-	@ApiParam(value="http://localhost:8081/vuelos/{idvuelo}")
+	@ApiParam(value="http://localhost:8082/vuelos/{idvuelo}")
 	@ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK. El recurso se obtiene correctamente", response = Vuelo.class ),
             @ApiResponse(code = 400, message = "Bad Request.Esta vez cambiamos el tipo de dato de la respuesta (String)", response = Vuelo.class),
             @ApiResponse(code = 500, message = "Error inesperado del sistema") })
-	@GetMapping(value="vuelos/{plazas}", produces=MediaType.APPLICATION_JSON_VALUE)
-	public List<Vuelo> BuscarVuelosPorId(@PathVariable("idvuelo")int idVuelo){
-		return service.listaVuelosDisponibles(idVuelo);
+	@GetMapping(value="vuelos/{idvuelo}", produces=MediaType.APPLICATION_JSON_VALUE)
+	public Vuelo BuscarVuelosPorId(@PathVariable("idvuelo")int idVuelo){
+		return service.BuscarVueloPorID(idVuelo);
+	}
+	
+	@ApiOperation(value = "Devuelve los datos del vuelo por id.")
+	@ApiParam(value="http://localhost:8082/vuelos/{idvuelo}")
+	@ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK. El recurso se obtiene correctamente", response = Vuelo.class ),
+            @ApiResponse(code = 400, message = "Bad Request.Esta vez cambiamos el tipo de dato de la respuesta (String)", response = Vuelo.class),
+            @ApiResponse(code = 500, message = "Error inesperado del sistema") })
+	@PostMapping(value="vuelos", produces=MediaType.APPLICATION_JSON_VALUE)
+	public void BuscarVuelosPorId(@RequestBody Vuelo vuelo){
+		service.agregarVuelo(vuelo);
 	}
 }

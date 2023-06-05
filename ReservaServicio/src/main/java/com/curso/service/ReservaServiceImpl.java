@@ -3,6 +3,8 @@
  */
 package com.curso.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.curso.dao.ReservaDao;
+import com.curso.entity.DatoReserva;
+import com.curso.entity.HotelAux;
 import com.curso.entity.Reserva;
+import com.curso.entity.ReservaAux;
+import com.curso.entity.VueloAux;
 
 /**
  * @author sinensia
@@ -24,13 +30,13 @@ public class ReservaServiceImpl implements ReservaService {
 	@Autowired
 	RestTemplate template;
 	
-	String url="http://localhost:8082/";
-	
+	String urlVuelo="http://localhost:8082/";
+	String urlHotel="http://localhost:8081/";
 	
 	@Override
-	public void crearReserva(Reserva reserva) {
-		template.put(url+"vuelos/"+reserva.getIdVuelo()+"/"+reserva.getCantPersonas(), Reserva.class);
-		dao.crearReserva(reserva.getNombreCliente(), reserva.getDni(), reserva.getIdHotel(), reserva.getIdVuelo());
+	public void crearReserva(ReservaAux reservaAux) {
+		template.put(urlVuelo+"vuelos/"+reservaAux.getIdVuelo()+"/"+reservaAux.getCantPersonas(), Reserva.class);
+		dao.crearReserva(reservaAux.getNombreCliente(), reservaAux.getDni(), reservaAux.getIdHotel(), reservaAux.getIdVuelo());
 		}
 
 	
@@ -43,10 +49,18 @@ public class ReservaServiceImpl implements ReservaService {
 	 * por lo que se ha conciderado que el nombre del paramentro de entrada es el del cliente.
 	 */
 	@Override
-	public List<Reserva> listareservas(String nombre) {
-		Reserva datoReserva = dao.buscarPorNombreCliente(nombre);
-		
-		return dao.findAll();
+	public List<DatoReserva> listareservas(String nombre) {
+		List<DatoReserva>datoReservas= new ArrayList<>();
+		HotelAux hotel=template.getForObject(urlHotel +"hoteles/"+nombre, HotelAux.class);
+			if(hotel.getNombre().equals(nombre)) {
+				List<Reserva>reservas= dao.buscarPorNombreHotel(hotel.getIdHotel());			
+				for (Reserva reserva : reservas) {					
+					VueloAux vuelo=template.getForObject(urlVuelo+"vuelos/"+reserva.getIdVuelo(), VueloAux.class);					
+					DatoReserva dato = new DatoReserva(nombre,reserva.getDni(),vuelo.getIdVuelo(),vuelo.getCompania(),vuelo.getFechaVuelo(),vuelo.getPrecio(),vuelo.getPlazasDisponibles());
+					datoReservas.add(dato);
+				}
+			}
+		return datoReservas;
 	}
 
 }
