@@ -25,10 +25,10 @@ _Requiere de posee una base de datos  conn la siguientes tablas:_
 
 ## Construido con 🛠️
 
-* [Java8] (https://www.java.com/es/download/help/java8_es.html) - Version del lenguaje
+* [Java8](https://www.java.com/es/download/help/java8_es.html) - Version del lenguaje
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [Spring Boot]([https://rometools.github.io/rome/](https://spring.io/projects/spring-boot)) - FrameWork
-* [Swagger]([https://rometools.github.io/rome/](https://swagger.io/))
+* [Spring Boot](https://spring.io/projects/spring-boot) - FrameWork
+* [Swagger](https://swagger.io/)
 
 ## Autores ✒️
 
