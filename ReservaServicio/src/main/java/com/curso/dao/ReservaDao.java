@@ -35,7 +35,7 @@ public interface ReservaDao extends JpaRepository<Reserva, Integer> {
 	/**
 	 * Consulta JPA para obtener los datos de un Hotel segun el nombre del hotel
 	 * @param idHotel
-	 * @return
+	 * @return List Reserva: lista de los
 	 */
 	@Query("select r from Reserva r where r.idHotel =:idHotel")
 	List<Reserva> buscarPorNombreHotel(int idHotel);

@@ -33,6 +33,7 @@ public class ReservaServiceImpl implements ReservaService {
 	String urlVuelo="http://localhost:8082/";
 	String urlHotel="http://localhost:8081/";
 	
+
 	@Override
 	public void crearReserva(ReservaAux reservaAux) {
 		template.put(urlVuelo+"vuelos/"+reservaAux.getIdVuelo()+"/"+reservaAux.getCantPersonas(), Reserva.class);

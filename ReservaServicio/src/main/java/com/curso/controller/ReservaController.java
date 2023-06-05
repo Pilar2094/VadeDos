@@ -35,7 +35,6 @@ public class ReservaController {
 	ReservaService service;
 	
 	/**
-	 * 
 	 * @param reservaAux
 	 */
 	@ApiOperation(value = "Crea la reserva del usuario, no devuelve ningun dato")
