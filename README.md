@@ -16,4 +16,28 @@ Utiliza una tabla de reservas con los siguientes campos: idReserva(autonumérico
 • Expone un recurso que ante una petición de tipo post, que recibe en el cuerpo de la misma un objeto JSON con el identificador vuelo, identificador hotel, nombre, dni y total de personas que forman la reserva, registrará la misma en la base de datos. Interacciona con el servicio de vuelos para actualizar las plazas disponibles al realizar la reserva. 
 • Dispondrá de otro recurso que, ante una petición get, devolverá las reservas existentes (nombre, dni, vuelo), para el nombre hotel recibido como variable en url. Deberá interaccionar con el servicio de hoteles para conocer el idHotel a partir de su nombre. 
 
+## Comenzando 🚀
+
+_Requiere de posee una base de datos  conn la siguientes tablas:_
+*Hotel
+*Vuelo
+*Reserva
+
+## Construido con 🛠️
+
+* [Java8] (https://www.java.com/es/download/help/java8_es.html) - Version del lenguaje
+* [Maven](https://maven.apache.org/) - Manejador de dependencias
+* [Spring Boot]([https://rometools.github.io/rome/](https://spring.io/projects/spring-boot)) - FrameWork
+* [Swagger]([https://rometools.github.io/rome/](https://swagger.io/))
+
+## Autores ✒️
+
+_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
+
+* **Carlos Luo** - *Trabajo Inicial* - [CarlosLS](https://github.com/CarlosLS1)
+
+## Licencia 📄
+
+Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+
 
