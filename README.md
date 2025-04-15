@@ -30,14 +30,6 @@ _Requiere de posee una base de datos  conn la siguientes tablas:_
 * [Spring Boot](https://spring.io/projects/spring-boot) - FrameWork
 * [Swagger](https://swagger.io/)
 
-## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Carlos Luo** - *Trabajo Inicial* - [CarlosLS](https://github.com/CarlosLS1)
-
-## Licencia 📄
-
 Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
 
 
